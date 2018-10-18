@@ -21,9 +21,11 @@ RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
 # Unsure if the next part is necessary but it does say -> You should add "extension=mcrypt.so" to php.ini
 #RUN echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini
 
-# Install NodeJS/NPM
+# Install NPM & Yarn
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get -yqq install npm 
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get install -yqq npm yarn
 
 # Install ssh2
 #RUN apt-get install -yqq libssh2-1 libssh2-1-dev \
