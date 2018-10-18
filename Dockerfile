@@ -3,7 +3,7 @@ FROM php:7.2-fpm
 MAINTAINER Wiebe Nieuwenhuis <info@wiebenieuwenhuis.nl>
 
 # apt-get required packages
-RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev iputils-ping
+RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev iputils-ping gnupg2
 
 # PHP extension installation
 RUN docker-php-ext-install pdo_mysql zip bcmath
@@ -21,8 +21,9 @@ RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
 # Unsure if the next part is necessary but it does say -> You should add "extension=mcrypt.so" to php.ini
 #RUN echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini
 
-# Install node
-RUN apt-get install nodejs
+# Install NodeJS/NPM
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get -yqq install npm 
 
 # Install ssh2
 #RUN apt-get install -yqq libssh2-1 libssh2-1-dev \
