@@ -1,6 +1,6 @@
 FROM php:7.2-fpm
 
-MAINTAINER Jeremy Brayton <jeremy@braytonium.com>
+MAINTAINER Wiebe Nieuwenhuis <info@wiebenieuwenhuis.nl>
 
 # apt-get required packages
 RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev iputils-ping
