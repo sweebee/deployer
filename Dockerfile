@@ -3,7 +3,7 @@ FROM php:7.2-fpm
 MAINTAINER Wiebe Nieuwenhuis <info@wiebenieuwenhuis.nl>
 
 # apt-get required packages
-RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev iputils-ping gnupg2
+RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev iputils-ping gnupg2 zip
 
 # PHP extension installation
 RUN docker-php-ext-install pdo_mysql zip bcmath
