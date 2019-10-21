@@ -1,9 +1,9 @@
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 
 MAINTAINER Wiebe Nieuwenhuis <info@wiebenieuwenhuis.nl>
 
 # apt-get required packages
-RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev iputils-ping gnupg2 zip
+RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev iputils-ping gnupg2 zip npm
 
 # PHP extension installation
 RUN docker-php-ext-install pdo_mysql zip bcmath
@@ -15,7 +15,7 @@ RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
     && docker-php-ext-install -j$(nproc) gd
 
 # Install NPM, Yarn & Gulp
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
 RUN apt-get install -yqq npm
 RUN npm install -g yarn gulp
 
