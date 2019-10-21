@@ -16,7 +16,7 @@ RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
 
 # Install NPM, Yarn & Gulp
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
-RUN apt-get install -yqq npm
+RUN apt-get install -y nodejs
 RUN npm install -g yarn gulp
 
 # Install composer
