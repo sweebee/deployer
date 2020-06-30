@@ -6,7 +6,7 @@ Docker file for deployer
  - Deployer.org
  - PHP 7.3
  - Composer
- - Node (12)
+ - Node (10)
  - NPM
  - Yarn
  - Gulp
