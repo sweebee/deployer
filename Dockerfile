@@ -28,7 +28,7 @@ ENV COMPOSER_CACHE_DIR /cache
 ENV PATH /root/.composer/vendor/bin:$PATH
 
 # Install composer parallel downloads
-RUN composer global require "hirak/prestissimo:^0.3"
+RUN composer global require "hirak/prestissimo:0.3.9"
 
 # Install deployer
 RUN composer global require "deployer/deployer"
