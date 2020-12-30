@@ -15,7 +15,7 @@ RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
     && docker-php-ext-install -j$(nproc) gd
 
 # Install NPM, Yarn, Gulp & Expo CLI
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install -g yarn gulp expo-cli
 
