@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.0-fpm
 
 MAINTAINER Wiebe Nieuwenhuis <info@wiebenieuwenhuis.nl>
 
@@ -11,13 +11,17 @@ RUN docker-php-ext-install pdo_mysql zip bcmath
 # Install iconv and gd
 RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
     && docker-php-ext-install -j$(nproc) iconv \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure gd \
     && docker-php-ext-install -j$(nproc) gd
 
-# Install NPM, Yarn, Gulp & Expo CLI
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-RUN apt-get install -y nodejs
-RUN npm install -g yarn gulp expo-cli
+# Fixes broken pipe errors for nodejs
+RUN dpkg -l | grep node && dpkg -r nodejs-doc
+# Add nodejs repo
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+# Install nodejs
+RUN apt update && apt-get install -y nodejs
+# Install yarn & gulp
+RUN npm install -g yarn gulp
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

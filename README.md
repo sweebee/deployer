@@ -1,12 +1,12 @@
 # deployer
-Docker file for deployer
+Docker container for GitLab CI deployments.
 
 ## Packages
 
- - Deployer.org
- - PHP 7.3
+ - PHP 8.0
  - Composer
- - Node (14)
+ - Deployer.org
+ - Node (16)
  - NPM
  - Yarn
  - Gulp
